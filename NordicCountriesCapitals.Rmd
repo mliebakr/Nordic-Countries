@@ -10,6 +10,8 @@ The size of the capital marker is showing the number of residents in the country
 
 ## `r Sys.Date()`
 
+Preparing data
+
 ```{r echo=FALSE}
 dfNordic <- data.frame(
   lat = c(59.3333333, 55.676098, 60.192059, 59.911491,64.13548),
@@ -20,9 +22,9 @@ dfNordic <- data.frame(
   
 ```
 
-Showing map
+## Showing map with capitals and circles with number of residents
 
-```{r}
+```{r echo=FALSE}
 library(leaflet)
 dfNordic %>% 
   leaflet() %>%
@@ -31,4 +33,3 @@ dfNordic %>%
 
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
