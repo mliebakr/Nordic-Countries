@@ -1,0 +1,34 @@
+---
+title: "Nordic Countries"
+author: "MLR"
+date: "6. november 2016"
+output: html_document
+---
+
+This Markdown document shows a map of the nordic countries and their capitals.
+The size of the capital marker is showing the number of residents in the country.
+
+## `r Sys.Date()`
+
+```{r echo=FALSE}
+dfNordic <- data.frame(
+  lat = c(59.3333333, 55.676098, 60.192059, 59.911491,64.13548),
+  lng = c(18.05, 12.568337, 24.945831, 10.757933, -21.89541 ),
+  Country = c("Sweden", "Denmark", "Finland", "Norway", "Iceland"),
+  Capital= c("Stockholm","Copenhagen","Helsinki", "Oslo", "Reykjavik"),
+  Residents = c(9747355, 5659715,5474094, 5165802,325671))
+  
+```
+
+Showing map
+
+```{r}
+library(leaflet)
+dfNordic %>% 
+  leaflet() %>%
+  addTiles() %>%
+  addCircles(weight = 1, radius = sqrt(dfNordic$Residents) * 30)
+
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
